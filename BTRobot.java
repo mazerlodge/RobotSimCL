@@ -21,13 +21,31 @@ public class BTRobot extends SimulatedRobot {
 	bRobotEnabled = true;
     }
 
+    // NOTE: This mentod is required by SimulatedRobot
+    /*
+    public void doExecutionSlice(OperatingMode desiredMode) {
+
+	if (desiredMode == OperatingMode.OPERATOR_CONTROL) 
+	    operatorControl();
+
+	if (desiredMode == OperatingMode.AUTONOMOUS)
+	    autonomous();
+
+
+    }
+    */
+
     public void disabled() {
+
+	showMsg("Entering disabled() method...");
 
 	// TODO: Any graceful shutdown goes here.
 
     }
 
     public void operatorControl() {
+
+	showMsg("Entering operatorControl()...");
 
 	while(isOperatorControl()) {
 
@@ -45,6 +63,8 @@ public class BTRobot extends SimulatedRobot {
     }
 
     public void autonomous() {
+
+	showMsg("Entering autonomous()...");
 
 	while(isAutonomous()) {
 	    // Note: Notice that control board's update() method is *not*

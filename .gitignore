@@ -1,0 +1,5 @@
+# don't commit classes
+*.class
+#
+# don't commit temp files
+*~

@@ -32,7 +32,7 @@ public class FMSEngine {
 
     }
 
-    public void update() {
+    public OperatingMode update() {
 
 	OperatingMode desiredMode = OperatingMode.DISABLED;
  
@@ -54,7 +54,9 @@ public class FMSEngine {
 	robo.currentMode = OperatingMode.DISABLED;
 	// Note: There is no call to doExecutionSlice() here, the robot shuts down
 	//        in the simulator. In the cRIO it doesn't quit.
-    }
+    
+	return desiredMode;
 
+    }
 
 }

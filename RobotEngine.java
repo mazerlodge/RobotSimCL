@@ -3,13 +3,30 @@ public class RobotEngine {
     private int SIM_LOOP_LIMIT = 12;
     private int SIM_AUTO_MODE_LIMIT = 2;
 
-    private int simLoopCount=0;
+    public int simLoopCount=0;
+
+    private BTRobot robo;
+
+    public RobotEngine() {
+
+	// Create a robot and give it a reference to this instance of the Engine.
+	robo = new BTRobot();
+	robo.theEngine = this;
+
+    }
 
     public void go() {
 
-	BTRobot robo = new BTRobot();
+	// The robot starts in autonomous mode, do one update then go into auto mode.
+	this.update();
 
+
+    }
+
+    public void update() {
+ 
 	while(simLoopCount < SIM_LOOP_LIMIT) {
+	    System.out.printf("RE.go() ln13: Running Loop %d\n", simLoopCount);
 	    simLoopCount++;
 
 	    // Using a simple loop count to determine which mode is active.

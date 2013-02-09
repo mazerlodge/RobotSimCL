@@ -21,6 +21,12 @@ public class BTRobot extends SimulatedRobot {
 	bRobotEnabled = true;
     }
 
+    public void disabled() {
+
+	// TODO: Any graceful shutdown goes here.
+
+    }
+
     public void operatorControl() {
 
 	while(isOperatorControl()) {
@@ -41,6 +47,10 @@ public class BTRobot extends SimulatedRobot {
     public void autonomous() {
 
 	while(isAutonomous()) {
+	    // Note: Notice that control board's update() method is *not*
+	    //        called while in autonomous mode.  The autoMode object
+	    //        updates the control board's members based on the predefined
+	    //        autonomous mode plan.
 
 	    autoMode.update(cb);
 	    dt.update(cb);

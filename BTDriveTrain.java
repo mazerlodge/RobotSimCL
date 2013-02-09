@@ -16,9 +16,12 @@ public class BTDriveTrain {
         System.out.printf("DT got rightDuration=%d\n", rightDI.duration);
 
 	// DriveTrain is responsible for decrementing durations
-	leftDI.duration--;
-	rightDI.duration--;
+	if (leftDI.duration > 0)
+	    leftDI.duration--;
 
+	if (rightDI.duration > 0)
+	    rightDI.duration--;
+	
 	// Post-decrement output
 	System.out.printf("DT POST got leftDuration=%d\n", leftDI.duration);
 	cb.setDriveInfo(leftDI, DriveSide.LEFT);

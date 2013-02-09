@@ -3,12 +3,15 @@ public class SimulatedRobot {
     // with non-cRio based code running in the RobotEngine simulator.
 
     public OperatingMode currentMode;
+    public RobotEngine theEngine;
 
     public boolean isOperatorControl() {
 	
 	boolean bRval = false;
 
-	if (currentMode == OperatingMode.AUTONOMOUS) 
+	theEngine.update();
+
+	if (currentMode == OperatingMode.OPERATOR_CONTROL) 
 	    bRval = true;
 
 	return  bRval;
@@ -19,7 +22,9 @@ public class SimulatedRobot {
 	
 	boolean bRval = false;
 
-	if (currentMode == OperatingMode.OPERATOR_CONTROL) 
+	theEngine.update();
+
+	if (currentMode == OperatingMode.AUTONOMOUS) 
 	    bRval = true;
 
 	return  bRval;

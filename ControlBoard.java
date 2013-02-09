@@ -8,6 +8,9 @@ public class ControlBoard {
     public ControlBoard() {
 
 	xVal = 0;
+	leftDI = new DriveInfo();
+	rightDI = new DriveInfo();
+	si = new ShotInfo();
 
     }
 

@@ -1,12 +1,10 @@
-public class BTRobot {
+public class BTRobot extends SimulatedRobot {
 
-
-    private int SIM_LOOP_LIMIT = 10;
-    private int simLoopCount=0;
     private boolean bRobotEnabled;
 
     private BTDriveTrain dt;
     private ControlBoard cb;
+    private BTAutonomous autoMode;
 
     public BTRobot() {
 
@@ -18,21 +16,9 @@ public class BTRobot {
 
 	dt = new BTDriveTrain();
 	cb = new ControlBoard();
+	autoMode = new BTAutonomous();
+
 	bRobotEnabled = true;
-	simLoopCount = 0;
-    }
-
-    public boolean isOperatorControl() {
-	
-	boolean bRval = true;
-
-	if (simLoopCount < SIM_LOOP_LIMIT) 
-	    simLoopCount++;
-	else
-	    bRval = false;
-
-	return  bRval;
-	
     }
 
     public void operatorControl() {
@@ -42,11 +28,30 @@ public class BTRobot {
 	    cb.update();
 	    dt.update(cb);
 
+	    // TODO: The following have not been implemented yet.
+	    // vi.update(cb); // Note: Vision should update right after cb
+	    // shooter.update(cb); 
+	    // climber.update(cb);
+	    
+
 	}
 
     }
 
     public void autonomous() {
+
+	while(isAutonomous()) {
+
+	    autoMode.update(cb);
+	    dt.update(cb);
+
+	    // TODO: The following have not been implemented yet.
+	    // vi.update(cb); // Note: Vision should update right after cb
+	    // shooter.update(cb); 
+	    // climber.update(cb);
+	    
+
+	}
 
     }
 }

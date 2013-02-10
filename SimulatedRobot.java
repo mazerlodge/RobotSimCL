@@ -38,7 +38,7 @@ public abstract class SimulatedRobot {
 	
 	boolean bRval = false;
 
-	currentMode = theEngine.update();
+	currentMode = theEngine.getDesiredOperatingMode();
 
 	if (currentMode == OperatingMode.OPERATOR_CONTROL) 
 	    bRval = true;
@@ -51,7 +51,7 @@ public abstract class SimulatedRobot {
 	
 	boolean bRval = false;
 
-	currentMode = theEngine.update();
+	currentMode = theEngine.getDesiredOperatingMode();
 
 	if (currentMode == OperatingMode.AUTONOMOUS) 
 	    bRval = true;

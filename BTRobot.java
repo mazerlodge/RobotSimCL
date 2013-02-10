@@ -21,20 +21,6 @@ public class BTRobot extends SimulatedRobot {
 	bRobotEnabled = true;
     }
 
-    // NOTE: This mentod is required by SimulatedRobot
-    /*
-    public void doExecutionSlice(OperatingMode desiredMode) {
-
-	if (desiredMode == OperatingMode.OPERATOR_CONTROL) 
-	    operatorControl();
-
-	if (desiredMode == OperatingMode.AUTONOMOUS)
-	    autonomous();
-
-
-    }
-    */
-
     public void disabled() {
 
 	showMsg("Entering disabled() method...");
@@ -57,7 +43,6 @@ public class BTRobot extends SimulatedRobot {
 	    // shooter.update(cb); 
 	    // climber.update(cb);
 	    
-
 	}
 
     }
@@ -80,7 +65,6 @@ public class BTRobot extends SimulatedRobot {
 	    // shooter.update(cb); 
 	    // climber.update(cb);
 	    
-
 	}
 
     }

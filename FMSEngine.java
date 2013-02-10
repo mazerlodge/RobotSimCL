@@ -4,6 +4,7 @@ public class FMSEngine {
     private int SIM_AUTO_MODE_LIMIT = 2;
 
     public int simLoopCount=0;
+    public OperatingMode currentDesiredMode = OperatingMode.DISABLED; 
 
     // This version of the FMSEngine supports a single robot.
     private BTRobot robo;
@@ -32,12 +33,12 @@ public class FMSEngine {
 
     }
 
-    public OperatingMode update() {
+    public OperatingMode getDesiredOperatingMode() {
 
 	OperatingMode desiredMode = OperatingMode.DISABLED;
  
-	while(simLoopCount < SIM_LOOP_LIMIT) {
-	    System.out.printf("RE.go() ln13: Running Loop %d\n", simLoopCount);
+	if (simLoopCount < SIM_LOOP_LIMIT) {
+	    System.out.printf("FMSE.gDOM() ln41: Running Loop %d\n", simLoopCount);
 	    simLoopCount++;
 
 	    // Using a simple loop count to determine which mode is active.
@@ -46,16 +47,24 @@ public class FMSEngine {
 	    else
 		desiredMode = OperatingMode.OPERATOR_CONTROL;
 
+	} 
+	else {
+	    desiredMode = OperatingMode.DISABLED;
+
+	}
+
+	return desiredMode;
+
+    }
+
+    public void update() {
+
+	while (simLoopCount < SIM_LOOP_LIMIT) {
+	    OperatingMode desiredMode = getDesiredOperatingMode();
+ 
 	    // Give the robot a slice of execution time.
 	    robo.doExecutionSlice(desiredMode);
-	
-	} // while simLoop...
-
-	robo.currentMode = OperatingMode.DISABLED;
-	// Note: There is no call to doExecutionSlice() here, the robot shuts down
-	//        in the simulator. In the cRIO it doesn't quit.
-    
-	return desiredMode;
+	}
 
     }
 
